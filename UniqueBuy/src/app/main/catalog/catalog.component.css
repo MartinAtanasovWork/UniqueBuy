@@ -1,0 +1,44 @@
+.catalog{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    height: calc(100vh - 52px);
+}
+.item{
+    background-color: aqua;
+    border: 2px solid black;
+    position: relative;
+    background-size: cover; 
+    background-position: center;
+    background-repeat: no-repeat;    
+}
+.item img{ 
+}
+.frow{
+    flex-basis: calc(100%/3);
+}
+.srow{
+    flex-basis: 50%;
+}
+.item h2{
+    position: absolute;
+    top: 45%;
+    left: 50%; 
+    transform: translateX(-50%);   
+    font-size: 2.5rem; 
+}
+.j{
+    background-image: url("../../../../public/catalog/jewelry.webp");  
+}
+.a{
+    background-image: url("../../../../public/catalog/artwork.webp");   
+}
+.c{
+    background-image: url("../../../../public/catalog/clothes.webp");  
+}
+.j,.a,.c{
+    filter: brightness(60%);
+}
+.j:hover,.a:hover,.c:hover{
+    filter:brightness(100%);
+}

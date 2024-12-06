@@ -1,25 +1,27 @@
-*{
-    font-size: 20px;
-    font-weight: bold;
+nav {
+    display: flex;    
+    font-size: 1.7rem;
+    width: 90%;
+    margin: 0 auto;
+    padding: 10px 0;
 }
-
-nav{
-    background: linear-gradient(90deg, #FAD6A5, #B8EBD0);
-    padding: 15px;
-    border-radius: 8px; 
-    border: 1px solid black;
-    display: flex;   
-    justify-content: space-between;
+nav a:hover{
+    text-decoration: underline;
+    opacity: 0.75;
+    color: #488d8d;
 }
-.logo {
-    margin-left: 50px;
+.logo{
+    flex-grow: 2;
 }
-nav > ul{
-    margin-right: 50px;
+.user{
+   
     display: flex;
-    gap: 20px; 
-    list-style: none;
+    gap: 40px;  
+    flex-grow: 0; 
 }
-nav > ul > li{
-    
+.us{
+    display: flex;
+    gap: 40px;
+    flex-grow: 4;
+    justify-content: center;
 }

@@ -1,0 +1,25 @@
+header{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    top: 25%;
+}
+header h1{
+    font-size: 2.7rem;
+}
+header p {
+    margin-top: 10px;
+    font-size: 1.2rem;
+}
+header a{
+    border: 1px solid black;
+    background-color: #B8EBD0;
+    border-radius: 25px;
+    padding: 10px 10px;
+    margin-top: 30px;
+    font-size: 1.2rem;
+}
+header a:hover{
+    background-color: #c4f6dc;
+}
