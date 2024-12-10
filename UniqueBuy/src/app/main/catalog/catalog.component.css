@@ -11,8 +11,10 @@
     background-size: cover; 
     background-position: center;
     background-repeat: no-repeat;    
+    filter: brightness(60%);
 }
-.item img{ 
+.item:hover{
+    filter:brightness(100%);
 }
 .frow{
     flex-basis: calc(100%/3);
@@ -36,9 +38,9 @@
 .c{
     background-image: url("../../../../public/catalog/clothes.webp");  
 }
-.j,.a,.c{
-    filter: brightness(60%);
+.p{
+    background-image: url("../../../../public/catalog/pottery.webp");  
 }
-.j:hover,.a:hover,.c:hover{
-    filter:brightness(100%);
+.f{
+    background-image: url("../../../../public/catalog/furniture.webp");  
 }

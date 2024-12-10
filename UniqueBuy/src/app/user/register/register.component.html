@@ -1,0 +1,86 @@
+<div class="all">
+    <app-navigation></app-navigation>
+    <hr>
+    <div class="container">
+        <h2>Register</h2>
+        <form #registerForm="ngForm" (ngSubmit)="formSubmitHandler()">
+
+            <div class="inputgroup two">
+                <label for="firstName">First Name</label>
+                <input type="text" name="firstName" id="firstName" ngModel #firstNameInput="ngModel" required>
+
+                @if (firstNameInput.touched && firstNameInput.errors?.["required"])
+                {
+                    <div class="error">First Name is required!</div>
+                }
+
+            </div>
+
+            <div class="inputgroup two">
+                <label for="lastName">Last Name</label>
+                <input type="text" name="lastName" id="lastName" ngModel #lastNameInput="ngModel" required>
+
+                @if (lastNameInput.touched && lastNameInput.errors?.["required"])
+                {
+                    <div class="error">Last Name is required!</div>
+                }
+
+            </div>
+
+            <div class="inputgroup two">
+                <label for="email">Email</label>
+                <input type="text" name="email" id="email" ngModel #emailInput="ngModel" required email>
+
+                @if (emailInput.touched)
+                {
+                    @if(emailInput.errors?.["required"])
+                    {
+                        <div class="error">Email is required!</div>
+                    }
+                    @if(emailInput.errors?.["email"])
+                    {
+                        <div class="error">Email is not valid!</div>
+                    }
+                }
+
+            </div>
+
+            <div class="inputgroup two">
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password" ngModel #passwordInput="ngModel" required
+                    minlength="8">
+
+                @if (passwordInput.touched)
+                {
+                    @if (passwordInput.errors?.["required"])
+                    {
+                        <div class="error">Password is required!</div>
+                    }
+                    @if (passwordInput.errors?.["minlength"])
+                    {
+                        <div class="error">Password must be more than 8 chars!</div>
+                    }
+                }
+
+            </div>
+
+            <div class="inputgroup two">
+                <label for="phone">Phone</label>
+                <input type="tel" name="phone" id="phone" ngModel #phoneInput="ngModel" required>
+            </div>
+
+            <div class="inputgroup two">
+                <label for="specialty">Specialty</label>
+                <select id="specialty" name="specialty" ngModel #specialtyInput="ngModel">
+                    <option value="jewelry">Jewelry</option>
+                    <option value="artwork">Artwork</option>
+                    <option value="clothes">Clothes</option>
+                    <option value="pottery">Pottery</option>
+                    <option value="furniture">Furniture</option>
+                </select>
+            </div>
+
+            <button>Register</button>
+        </form>
+    </div>
+</div>

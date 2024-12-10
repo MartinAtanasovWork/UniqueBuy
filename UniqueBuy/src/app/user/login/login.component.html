@@ -1,0 +1,35 @@
+<div class="all">
+    <app-navigation></app-navigation>
+    <hr>
+    <div class="container">
+        <h2>Login</h2>
+        <form #loginForm="ngForm" (ngSubmit)="formSubmitHandler()">
+            <div class="inputgroup">
+                <label for="email">Email</label>
+                <input type="text" name="email" id="email" ngModel #emailInput="ngModel" required email>
+            </div>
+
+            @if (emailInput.touched)
+            {
+                 @if (emailInput.errors?.["required"]) {
+                    <div class="error">Email is required!</div>  
+                }
+                @if (emailInput.errors?.["email"]) {
+                    <div class="error">Email is not valid!</div>
+                }
+            }
+
+            <div class="inputgroup">
+                <label for="password">Password</label>
+                <input type="text" name="password" id="password" ngModel #passwordInput="ngModel" required>
+            </div>
+
+            @if (passwordInput.touched && passwordInput.errors?.["required"])
+            {
+                <div class="error">Password is required!</div>
+            }
+
+            <button>Login</button>
+        </form>
+    </div>
+</div>

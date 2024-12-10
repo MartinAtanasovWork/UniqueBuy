@@ -1,11 +1,8 @@
 TODO
 
-- DOVURSHI CATALOG chatgpt images
 - npravi login and ragister design
 - napravi design za catalozite kato da gi vidish neshttat
 - npravi deesign za edno neshto ot tqh
-- napravi putishtata(routes)
-- napravi NotFound 404
 - napravi usera service and auth
 - napravi servicite za danite
 - napravi sizdavane na item
@@ -22,3 +19,4 @@ Ne zabravqqi
  auth
  font awesome za ikoni
 
+skrivane na parola - oche za vijdane 

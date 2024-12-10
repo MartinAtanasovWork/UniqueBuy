@@ -1,0 +1,45 @@
+* {
+    font-family: "Knewave", system-ui;
+    font-weight: 400;
+    font-style: normal;
+}
+.container{
+    background: linear-gradient(135deg, #FAD6A5, #B8EBD0, #A1C6EA);
+    width: 100%;
+    height: 100%;
+    position: absolute    
+}
+.notfound{
+    position: inherit;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);   
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    padding: 100px 50px;
+    border: 5px solid black;
+    border-radius: 50%;
+    
+}
+.notfound h2{
+    font-size: 2.5rem;
+    text-align: center;
+}
+.notfound p {
+    font-size: 1.5rem;
+    text-align: center;
+}
+.notfound a{
+    border: 2px solid black;
+    background-color: #A9DFF5;
+    border-radius: 30px;
+    padding: 10px 10px;
+    margin-top: 30px;
+    font-size: 1.5rem;
+}
+.notfound a:hover{
+    background-color: rgb(180, 250, 255);
+}

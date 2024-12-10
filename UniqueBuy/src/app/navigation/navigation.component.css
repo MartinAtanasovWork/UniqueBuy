@@ -1,3 +1,8 @@
+* {
+    font-family: "Knewave", system-ui;
+    font-weight: 400;
+    font-style: normal;
+}
 nav {
     display: flex;    
     font-size: 1.7rem;
