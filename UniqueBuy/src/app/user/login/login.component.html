@@ -21,7 +21,7 @@
 
             <div class="inputgroup">
                 <label for="password">Password</label>
-                <input type="text" name="password" id="password" ngModel #passwordInput="ngModel" required>
+                <input type="password" name="password" id="password" ngModel #passwordInput="ngModel" required>
             </div>
 
             @if (passwordInput.touched && passwordInput.errors?.["required"])
@@ -29,7 +29,7 @@
                 <div class="error">Password is required!</div>
             }
 
-            <button>Login</button>
+            <button [disabled]="form?.invalid">Login</button>
         </form>
     </div>
 </div>
