@@ -1,4 +1,4 @@
-const { loginController, registerController, logoutController } = require("../controllers/artisan");
+const { loginController, registerController, logoutController, getUserController } = require("../controllers/artisan");
 const { getAllArtworkController, getOneArtworkContoller, createArtworkContoller, updateArtworkController, deleteArtworkController } = require("../controllers/artwork");
 const { getAllClothesController } = require("../controllers/clothes");
 const { getAllFurnitureController, getOneFurnitureContoller, createFurnitureContoller, updateFurnitureController, deleteFurnitureController } = require("../controllers/furniture");
@@ -11,6 +11,7 @@ const router = require("express").Router();
 router.post("/artisan/login",loginController);
 router.post("/artisan/register",registerController);
 router.get("/artisan/logout",isUser,logoutController);
+router.get("/artisan",isUser,getUserController)
 
 router.get("/jewelry",getAllJewelryController);
 router.get("/jewelry/:id",getOneJewelryContoller);

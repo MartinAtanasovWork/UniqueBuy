@@ -1,0 +1,39 @@
+.toast{
+    position: absolute;
+    top: 20px;
+    right: 20px;   
+    width: 300px;
+    height: 80px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    border-radius: 10px;
+}
+.success{
+    background-color: hwb(120 7% 32%);
+}
+.warning{
+    background-color: rgb(163, 16, 16);
+}
+.toast i{
+    font-size: 3rem;        
+    flex-basis: 100%;
+    color: white;    
+    margin: 20px auto;
+}
+.toast h2{
+    align-self: flex-start;
+    font-size: 1.2rem;
+}
+.toast p{
+    font-size: 1rem;
+} 
+.close{
+    font-size: 0.8rem !important;
+    cursor: pointer;
+}
+.close:hover{
+    opacity: 0.8;
+}

@@ -11,12 +11,12 @@
 
             @if (emailInput.touched)
             {
-                 @if (emailInput.errors?.["required"]) {
-                    <div class="error">Email is required!</div>  
-                }
-                @if (emailInput.errors?.["email"]) {
-                    <div class="error">Email is not valid!</div>
-                }
+            @if (emailInput.errors?.["required"]) {
+            <div class="error">Email is required!</div>
+            }
+            @if (emailInput.errors?.["email"]) {
+            <div class="error">Email is not valid!</div>
+            }
             }
 
             <div class="inputgroup">
@@ -26,10 +26,11 @@
 
             @if (passwordInput.touched && passwordInput.errors?.["required"])
             {
-                <div class="error">Password is required!</div>
+            <div class="error">Password is required!</div>
             }
 
-            <button [disabled]="form?.invalid">Login</button>
+            <button>Login</button>
         </form>
     </div>
 </div>
+<app-toast [message]="toastMessage" [type]="toastType" [isVisible]="showToast" (closeToast)="hideToast()"></app-toast>

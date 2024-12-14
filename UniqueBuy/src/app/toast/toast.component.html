@@ -1,0 +1,17 @@
+@if(isVisible){
+    <div class="toast {{type}}">
+        @switch (type) {
+            @case ("success") {
+                <i class="fa-solid fa-check"></i>
+                <h2>Success!</h2>
+            }
+            @case ("warning") {
+                <i class="fa-solid fa-triangle-exclamation"></i>
+                <h2>Oops!</h2>
+            }
+        }
+        
+        <p>{{message}}</p>
+        <i class="fa-solid fa-x close" (click)="close()"></i>
+    </div>
+}

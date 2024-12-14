@@ -50,8 +50,14 @@ async function login(email,password) {
     return data;
 }
 
+async function getUser(id) {
+    let artisan = await Artisan.findOne({_id:id});
+
+    return artisan;
+}
 
 module.exports = {
     register,
-    login  
+    login,
+    getUser  
 }

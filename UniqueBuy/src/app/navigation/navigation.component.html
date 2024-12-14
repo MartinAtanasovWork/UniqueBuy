@@ -5,8 +5,15 @@
         <a routerLink="/locations">Locations</a>
         <a routerLink="/about-us">About Us</a>
     </div>
-    <div class="user">
-        <a routerLink="/login">Login</a>
-        <a routerLink="/register">Register</a>
-    </div>   
+    @if (isAuth) {
+        <div class="user">
+            <a routerLink="/profile">Profile</a>
+            <a (click)="logout()">Logout</a>
+        </div>
+    }@else{
+        <div class="user">
+            <a routerLink="/login">Login</a>
+            <a routerLink="/register">Register</a>
+        </div> 
+    }     
 </nav>
