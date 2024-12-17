@@ -1,41 +1,37 @@
 import { Injectable } from '@angular/core';
 import { ServerResponse, User, UserInfo } from './types/user';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { environment } from '../../environments/environment.development';
-
+import { HttpClient } from '@angular/common/http';
+import { BehaviorSubject, tap } from 'rxjs';
+import { isErrorResponse } from './types/typeguards/user.typeguard';
 
 @Injectable({
     providedIn: 'root'
 })
 export class UserService {
-    user: UserInfo | undefined;
-    url = environment.API_URL + "artisan";
-    headers = new HttpHeaders();
+    private user$$ = new BehaviorSubject<UserInfo | null>(null);
+    private user$ = this.user$$.asObservable();
 
-    constructor(private http: HttpClient) { }
+    user: UserInfo | null = null;
+    url = "/api/artisan";
+
+    constructor(private http: HttpClient) { 
+        this.user$.subscribe(user => {
+            this.user = user;
+        })
+    }
 
     login(email: string, password: string) {
-        this.headers = this.headers.append("Content-Type", "application/json");
-
-        return this.http.post<ServerResponse>(
-            this.url + "/login",
-            { email, password },
-            {
-                headers: this.headers
-            }
-        );
+        return this.http.post<ServerResponse>(this.url + "/login", { email, password })
+            .pipe(tap((response) => {
+                if (!isErrorResponse(response)) this.user$$.next(response.artisan);
+            }));
     }
 
     register(firstName: string, lastName: string, email: string, password: string) {
-        this.headers = this.headers.append("Content-Type", "application/json");
-
-        return this.http.post<ServerResponse>(
-            this.url + "/register",
-            { firstName, lastName, email, password },
-            {
-                headers: this.headers
-            }
-        );
+        return this.http.post<ServerResponse>(this.url + "/register", { firstName, lastName, email, password })
+            .pipe(tap((response) => {
+                if (!isErrorResponse(response)) this.user$$.next(response.artisan);
+            }));
     }
 
     saveInfo(user: User) {
@@ -44,37 +40,18 @@ export class UserService {
     }
 
     isAuth() {
-        if (this.user && localStorage.getItem("token")) {
-            return true;
-        } else {
-            return false;
-        }
+        return this.user ? true : false;
     }
 
     getUserInfo() {
-        let token = localStorage.getItem("token");
-
-        if (token) {
-            this.headers = this.headers.append("Auth-Token", token);         
-          
-            this.http.get<UserInfo>(this.url, {
-                headers: this.headers
-            }).subscribe(data => {
-                this.user = data;
-            })
-        }
+        return this.http.get<UserInfo>(this.url)
+            .pipe(tap((user) => this.user$$.next(user)));
     }
 
-    logout(){
-        let token = localStorage.getItem("token") || "";
-
-        this.headers = this.headers.append("Auth-Token",token);
-
-        this.http.get(this.url + "/logout",{
-            headers: this.headers
-        })
-
-        this.user = undefined;
+    logout() {      
+        this.user = null;
         localStorage.removeItem("token");
+
+        return this.http.get(this.url + "/logout", {});
     }
 }

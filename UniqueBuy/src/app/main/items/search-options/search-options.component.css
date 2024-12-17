@@ -1,0 +1,6 @@
+div{
+    border-right:1px solid black;
+    height: fit-content;
+    min-height: calc(100vh - 64.4px);
+    background: linear-gradient(to bottom, #FFDAC1, #D5F4E6, #E6E6FA, #F8F1F1);   
+}

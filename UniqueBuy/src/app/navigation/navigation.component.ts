@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { UserService } from '../user/user.service';
 
@@ -9,17 +9,16 @@ import { UserService } from '../user/user.service';
     templateUrl: './navigation.component.html',
     styleUrl: './navigation.component.css'
 })
-export class NavigationComponent implements OnInit {
-    isAuth = false;
-
+export class NavigationComponent{   
     constructor(private us: UserService,private router: Router) { }
 
-    logout() {
-        this.us.logout();
-        this.router.navigate(["/"]);
+    get isAuth(){
+        return this.us.isAuth();
     }
 
-    ngOnInit(): void {
-        setTimeout(() => { this.isAuth = this.us.isAuth() }, 1000);
+    logout() {
+        this.us.logout().subscribe(() => {
+            this.router.navigate(["/"]);
+        });        
     }
 }

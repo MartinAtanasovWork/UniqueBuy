@@ -1,10 +1,24 @@
-hr{
+hr {
     border: none;
     height: 2px;
     background-color: black;
 }
-aside{
-    width: 20%;
-    height: calc(100vh - 64.4px);
-    border-right: 2px solid black;
+
+.all {
+    display: flex;
+}
+
+aside {
+    flex-basis: 20%;
+}
+
+section {
+    background-color: #F8F1F1;
+    box-shadow: 0 4px 10px rgba(255, 138, 117, 0.3),
+        0 4px 10px rgba(213, 244, 230, 0.3),
+        0 4px 10px rgba(230, 230, 250, 0.3);
+    flex-grow: 1;
+}
+.nav{
+    background: linear-gradient(135deg, #FAD6A5, #B8EBD0, #A1C6EA);
 }

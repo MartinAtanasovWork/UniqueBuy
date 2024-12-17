@@ -17,4 +17,27 @@ Ne zabravqqi
  canActive
 
 skrivane na parola - oche za vijdane 
+clothes options year
 
+2 interceptors
+httpinterceptor = /url s url-to ot envirnomtnet
+tokeninterceptor = za token
+
+2 pipe poen
+async
+???
+???
+
+lazy loading 
+canLoad
+
+napravi Auth guard
+
+
+DNES
+article design
+items service
+item details designs???
+search s options
+kolichka ikona
+kolichka interface

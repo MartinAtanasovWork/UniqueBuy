@@ -1,22 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NavigationComponent } from '../../navigation/navigation.component';
+import { SearchOptionsComponent } from '../items/search-options/search-options.component';
+import { ArticleComponent } from '../items/article/article.component';
 
 @Component({
-  selector: 'app-view',
-  standalone: true,
-  imports: [NavigationComponent],
-  templateUrl: './view.component.html',
-  styleUrl: './view.component.css'
+    selector: 'app-view',
+    standalone: true,
+    imports: [NavigationComponent,SearchOptionsComponent,ArticleComponent],
+    templateUrl: './view.component.html',
+    styleUrl: './view.component.css'
 })
-export class ViewComponent implements OnInit{
+export class ViewComponent implements OnInit {
+    item = "";
 
-    constructor(private route: ActivatedRoute){}
-
+    constructor(private route: ActivatedRoute) { }
+    
     ngOnInit(): void {
-        const item = this.route.snapshot.params["item"];
-
-        console.log(item);
-        
+        this.item = this.route.snapshot.params["item"];
     }
 }

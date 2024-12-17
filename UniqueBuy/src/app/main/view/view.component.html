@@ -1,14 +1,12 @@
-<app-navigation />
+<div class="nav">
+    <app-navigation />
+</div>
 <hr>
-<aside>
-    <ul>
-        <li>a</li>
-        <li>b</li>
-        <li>c</li>
-        <li>d</li>
-        <li>e</li>
-    </ul>
-</aside>
-<section>
-    
-</section>
+<div class="all">
+    <aside>
+        <app-search-options [item]="item" />
+    </aside>
+    <section>
+        <app-article></app-article>
+    </section>
+</div>
