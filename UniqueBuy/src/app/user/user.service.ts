@@ -14,7 +14,7 @@ export class UserService {
     user: UserInfo | null = null;
     url = "/api/artisan";
 
-    constructor(private http: HttpClient) { 
+    constructor(private http: HttpClient) {
         this.user$.subscribe(user => {
             this.user = user;
         })
@@ -34,7 +34,7 @@ export class UserService {
             }));
     }
 
-    saveInfo(user: User) {
+    saveInfo(user: User) {        
         this.user = user.artisan;
         localStorage.setItem("token", user['Auth-Token']);
     }
@@ -48,10 +48,8 @@ export class UserService {
             .pipe(tap((user) => this.user$$.next(user)));
     }
 
-    logout() {      
+    logout() {
         this.user = null;
-        localStorage.removeItem("token");
-
         return this.http.get(this.url + "/logout", {});
     }
 }

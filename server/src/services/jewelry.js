@@ -12,7 +12,9 @@ async function getOneJewelry(id) {
     return data;
 }
 
-async function createJewelry(jewelryInfo) {
+async function createJewelry(jewelryInfo,artisanId) {
+    jewelryInfo.artisan_id = artisanId;
+
     let data = new Jewelry(jewelryInfo) ;
 
     await data.save();

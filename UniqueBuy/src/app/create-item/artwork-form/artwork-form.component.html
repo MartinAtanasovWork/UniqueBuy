@@ -1,0 +1,150 @@
+<app-navigation />
+<div class="container">
+    <h2>Create Artwork</h2>
+    <form #createItemForm="ngForm" (ngSubmit)="formSubmitHandler()">
+
+        <div class="inputgroup two">
+            <label for="name">Name</label>
+            <input type="text" name="name" id="name" ngModel #nameInput="ngModel" required>
+
+            @if (nameInput.touched && nameInput.errors?.["required"])
+            {
+            <div class="error">Name is required!</div>
+            }
+
+        </div>
+
+        <div class="inputgroup two">
+            <label for="description">Description</label>
+            <textarea type="text" name="description" id="description" ngModel #descriptionInput="ngModel" required></textarea>
+
+            @if (descriptionInput.touched && descriptionInput.errors?.["required"])
+            {
+            <div class="error">Description is required!</div>
+            }
+
+        </div>
+
+        <div class="inputgroup two">
+            <label for="price">Price</label>
+            <input type="number" name="price" id="price" ngModel #priceInput="ngModel" required min="0">
+
+            @if (priceInput.touched)
+            {
+            @if(priceInput.errors?.["required"])
+            {
+            <div class="error">Price is required!</div>
+            }
+            }
+
+        </div>
+
+        <div class="inputgroup two">
+            <label for="quantity">Quantity</label>
+            <input type="number" name="stock_quantity" id="quantity" ngModel #quantityInput="ngModel" required
+                min="1">
+
+            @if (quantityInput.touched)
+            {
+            @if (quantityInput.errors?.["required"])
+            {
+            <div class="error">Quantity is required!</div>
+            }
+            }
+
+        </div>
+
+        <div class="inputgroup two">
+            <label for="image">Image URL</label>
+            <input type="text" name="image_url" id="image" ngModel #imageInput="ngModel" required>
+            @if (imageInput.touched)
+            {
+            @if (imageInput.errors?.["required"])
+            {
+            <div class="error">Image URL is required!</div>
+            }
+            }
+        </div>
+        
+        <div class="inputgroup two">
+            <label for="medium">Medium</label>
+            <select id="medium" name="medium" ngModel #mediumInput="ngModel" required>
+                @for (medium of artMediums; track $index) {
+                    <option [value]="medium.toLowerCase()">{{medium}}</option>
+                }
+            </select>   
+            @if (mediumInput.touched)
+            {
+            @if (mediumInput.errors?.["required"])
+            {
+            <div class="error">Medium is required!</div>
+            }
+            }           
+        </div>
+        <div class="inputgroup two">
+            <label for="dimensions">Dimensions</label>
+            <input type="text" name="dimensions" id="dimensions" ngModel #dimensionsInput="ngModel" required>
+        
+            @if (dimensionsInput.touched && dimensionsInput.errors?.["required"])
+            {
+            <div class="error">Dimensions is required!</div>
+            }
+        
+        </div>
+        <div class="inputgroup two">
+            <label for="framing">Framing Options</label>
+            <input type="text" name="framing_options" id="framing" ngModel #dimensionsInput="ngModel" required>
+        
+            @if (dimensionsInput.touched && dimensionsInput.errors?.["required"])
+            {
+            <div class="error">Dimensions is required!</div>
+            }
+        
+        </div>
+        <div class="inputgroup two">
+            <label for="style">Style</label>
+            <select id="style" name="style" ngModel #styleInput="ngModel" required>
+                @for (style of artStyles; track $index) {
+                    <option [value]="style.toLowerCase()">{{style}}</option>
+                }
+            </select>   
+            @if (styleInput.touched)
+            {
+            @if (styleInput.errors?.["required"])
+            {
+            <div class="error">Style is required!</div>
+            }
+            }           
+        </div>
+        <div class="inputgroup two">
+            <label for="year">Year</label>
+            <input type="number" name="year_created" id="year" ngModel #yearInput="ngModel" min="1600" max="2024" required>
+        
+            @if (yearInput.touched)
+            {
+                @if(yearInput.errors?.["required"]){
+                    <div class="error">Year is required!</div>
+                }
+                @if(yearInput.errors?.["min"]){
+                    <div class="error">Year must be greater than 1600!</div>
+                }
+                @if(yearInput.errors?.["max"]){
+                    <div class="error">Year must be axistinng year!</div>
+                }
+            }
+        
+        </div>
+        <div class="inputgroup two">
+            <label for="edition">Edition</label>
+            <input type="text" name="edition" id="edition" ngModel #editionInput="ngModel" min="1600" required>
+        
+            @if (editionInput.touched && editionInput.errors?.["required"])
+            {
+            <div class="error">Edition is required!</div>
+            }
+        
+        </div>
+
+        <button [disabled]="!!form?.invalid">Create Artwork</button>
+    </form>
+</div>

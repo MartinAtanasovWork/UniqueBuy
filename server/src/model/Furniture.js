@@ -11,7 +11,7 @@ const FurnitureSchema = new mongoose.Schema(
       required: true
     },
     price: {
-      type: mongoose.Schema.Types.Decimal128, 
+      type: Number, 
       required: true,
     },
     stock_quantity: {
@@ -20,6 +20,7 @@ const FurnitureSchema = new mongoose.Schema(
     },
     image_url: {
       type: String,
+      required: true
     },
     artisan_id: {
       type: mongoose.Schema.Types.ObjectId, 
@@ -30,10 +31,10 @@ const FurnitureSchema = new mongoose.Schema(
       type: String, 
     },
     dimensions: {
-      type: Object, 
+      type: String, 
     },
     weight: {
-      type: mongoose.Schema.Types.Decimal128,
+      type: Number,
     },
     type: {
       type: String, 
@@ -43,7 +44,7 @@ const FurnitureSchema = new mongoose.Schema(
       default: false,
     },
     load_capacity: {
-      type: mongoose.Schema.Types.Decimal128, 
+      type: Number, 
     },
   },
   {

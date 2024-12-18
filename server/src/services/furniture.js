@@ -12,16 +12,18 @@ async function getOneFurniture(id) {
     return data;
 }
 
-async function createFurniture(FurnitureInfo) {
-    let data = new Furniture(FurnitureInfo) ;
+async function createFurniture(furnitureInfo,artisanId) {
+    furnitureInfo.artisan_id = artisanId; 
+
+    let data = new Furniture(furnitureInfo) ;
 
     await data.save();
 
     return data;
 }
 
-async function updateFurniture(id,FurnitureInfo) {
-    let data = await Furniture.findOneAndUpdate({_id:id},FurnitureInfo);
+async function updateFurniture(id,furnitureInfo) {
+    let data = await Furniture.findOneAndUpdate({_id:id},furnitureInfo);
 
     return data;
 }

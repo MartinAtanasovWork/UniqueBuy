@@ -2,7 +2,9 @@
     <div class="logo" routerLink="">LOGO</div>
     <div class="us">
         <a routerLink="/catalog">Catalog</a>
-        <a routerLink="/locations">Locations</a>
+        @if(isAuth){
+            <a routerLink="/create">Create</a>
+        }       
         <a routerLink="/about-us">About Us</a>
     </div>
     @if (isAuth) {

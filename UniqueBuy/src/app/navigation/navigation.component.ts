@@ -9,16 +9,17 @@ import { UserService } from '../user/user.service';
     templateUrl: './navigation.component.html',
     styleUrl: './navigation.component.css'
 })
-export class NavigationComponent{   
-    constructor(private us: UserService,private router: Router) { }
+export class NavigationComponent {
+    constructor(private us: UserService, private router: Router) { }
 
-    get isAuth(){
+    get isAuth() {
         return this.us.isAuth();
     }
 
     logout() {
         this.us.logout().subscribe(() => {
+            localStorage.removeItem("token");
             this.router.navigate(["/"]);
-        });        
+        });
     }
 }

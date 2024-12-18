@@ -1,0 +1,138 @@
+<app-navigation />
+<div class="container">
+    <h2>Create Clothes</h2>
+    <form #createItemForm="ngForm" (ngSubmit)="formSubmitHandler()">
+
+        <div class="inputgroup two">
+            <label for="name">Name</label>
+            <input type="text" name="name" id="name" ngModel #nameInput="ngModel" required>
+
+            @if (nameInput.touched && nameInput.errors?.["required"])
+            {
+            <div class="error">Name is required!</div>
+            }
+
+        </div>
+
+        <div class="inputgroup two">
+            <label for="description">Description</label>
+            <textarea type="text" name="description" id="description" ngModel #descriptionInput="ngModel" required></textarea>
+
+            @if (descriptionInput.touched && descriptionInput.errors?.["required"])
+            {
+            <div class="error">Description is required!</div>
+            }
+
+        </div>
+
+        <div class="inputgroup two">
+            <label for="price">Price</label>
+            <input type="number" name="price" id="price" ngModel #priceInput="ngModel" required min="0">
+
+            @if (priceInput.touched)
+            {
+            @if(priceInput.errors?.["required"])
+            {
+            <div class="error">Price is required!</div>
+            }
+            }
+
+        </div>
+
+        <div class="inputgroup two">
+            <label for="quantity">Quantity</label>
+            <input type="number" name="stock_quantity" id="quantity" ngModel #quantityInput="ngModel" required
+                min="1">
+
+            @if (quantityInput.touched)
+            {
+            @if (quantityInput.errors?.["required"])
+            {
+            <div class="error">Quantity is required!</div>
+            }
+            }
+
+        </div>
+
+        <div class="inputgroup two">
+            <label for="image">Image URL</label>
+            <input type="text" name="image_url" id="image" ngModel #imageInput="ngModel" required>
+            @if (imageInput.touched)
+            {
+            @if (imageInput.errors?.["required"])
+            {
+            <div class="error">Image URL is required!</div>
+            }
+            }
+        </div>
+        
+        <div class="inputgroup two">
+            <label for="material">Material</label>
+            <select id="material" name="material" ngModel #materialInput="ngModel" required>
+                @for (material of materials; track $index) {
+                    <option [value]="material.toLowerCase()">{{material}}</option>
+                }
+            </select>   
+            @if (materialInput.touched)
+            {
+            @if (materialInput.errors?.["required"])
+            {
+            <div class="error">Material is required!</div>
+            }
+            }           
+        </div>
+        <div class="inputgroup two">
+            <label for="size">Size</label>
+            <select id="size" name="size" ngModel #sizeInput="ngModel" required>
+                @for (size of sizes; track $index) {
+                    <option [value]="size.toLowerCase()">{{size}}</option>
+                }
+            </select>   
+            @if (sizeInput.touched)
+            {
+            @if (sizeInput.errors?.["required"])
+            {
+            <div class="error">Size is required!</div>
+            }
+            }           
+        </div>
+
+        <div class="inputgroup two">
+            <label for="gender">Gender</label>
+            <input type="text" name="gender" id="gender" ngModel #genderInput="ngModel" required>
+            @if (genderInput.touched)
+            {
+            @if (genderInput.errors?.["required"])
+            {
+            <div class="error">Gender is required!</div>
+            }
+            }
+        </div>
+
+        <div class="inputgroup two">
+            <label for="fit">Fit</label>
+            <input type="text" name="fit" id="fit" ngModel #fitInput="ngModel" required>
+            @if (fitInput.touched)
+            {
+            @if (fitInput.errors?.["required"])
+            {
+            <div class="error">Fit is required!</div>
+            }
+            }
+        </div>
+
+        <div class="inputgroup two">
+            <label for="careInstructions">Care Instructions</label>
+            <input type="text" name="care_instructions" id="careInstructions" ngModel #careInstructionsInput="ngModel" required>
+            @if (careInstructionsInput.touched)
+            {
+            @if (careInstructionsInput.errors?.["required"])
+            {
+            <div class="error">Care Instructions are required!</div>
+            }
+            }
+        </div>
+
+        <button [disabled]="!!form?.invalid">Create Clothes</button>
+    </form>
+</div>

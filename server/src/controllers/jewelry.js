@@ -17,9 +17,10 @@ async function getOneJewelryContoller(req,res) {
 }
 
 async function createJewelryContoller(req,res) {
+    let artisan_id = req.user._id;
     let data = req.body;
 
-    let result = await createJewelry(data);
+    let result = await createJewelry(data,artisan_id);
     
     res.json(result);
     res.end();

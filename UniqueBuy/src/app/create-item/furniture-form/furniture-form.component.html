@@ -1,0 +1,154 @@
+<app-navigation />
+<div class="container">
+    <h2>Create Furniture</h2>
+    <form #createItemForm="ngForm" (ngSubmit)="formSubmitHandler()">
+
+        <div class="inputgroup two">
+            <label for="name">Name</label>
+            <input type="text" name="name" id="name" ngModel #nameInput="ngModel" required>
+
+            @if (nameInput.touched && nameInput.errors?.["required"])
+            {
+            <div class="error">Name is required!</div>
+            }
+
+        </div>
+
+        <div class="inputgroup two">
+            <label for="description">Description</label>
+            <textarea type="text" name="description" id="description" ngModel #descriptionInput="ngModel" required></textarea>
+
+            @if (descriptionInput.touched && descriptionInput.errors?.["required"])
+            {
+            <div class="error">Description is required!</div>
+            }
+
+        </div>
+
+        <div class="inputgroup two">
+            <label for="price">Price</label>
+            <input type="number" name="price" id="price" ngModel #priceInput="ngModel" required min="0">
+
+            @if (priceInput.touched)
+            {
+            @if(priceInput.errors?.["required"])
+            {
+            <div class="error">Price is required!</div>
+            }
+            }
+
+        </div>
+
+        <div class="inputgroup two">
+            <label for="quantity">Quantity</label>
+            <input type="number" name="stock_quantity" id="quantity" ngModel #quantityInput="ngModel" required
+                min="1">
+
+            @if (quantityInput.touched)
+            {
+            @if (quantityInput.errors?.["required"])
+            {
+            <div class="error">Quantity is required!</div>
+            }
+            }
+
+        </div>
+
+        <div class="inputgroup two">
+            <label for="image">Image URL</label>
+            <input type="text" name="image_url" id="image" ngModel #imageInput="ngModel" required>
+            @if (imageInput.touched)
+            {
+            @if (imageInput.errors?.["required"])
+            {
+            <div class="error">Image URL is required!</div>
+            }
+            }
+        </div>
+        
+        <div class="inputgroup two">
+            <label for="material">Material</label>
+            <select id="material" name="material" ngModel #materialInput="ngModel" required>
+                @for (material of materials; track $index) {
+                    <option [value]="material.toLowerCase()">{{material}}</option>
+                }
+            </select>   
+            @if (materialInput.touched)
+            {
+            @if (materialInput.errors?.["required"])
+            {
+            <div class="error">Material is required!</div>
+            }
+            }           
+        </div>
+
+        <div class="inputgroup two">
+            <label for="dimensions">Dimensions</label>
+            <input type="text" name="dimensions" id="dimensions" ngModel #dimensionsInput="ngModel" required>
+            @if (dimensionsInput.touched)
+            {
+            @if (dimensionsInput.errors?.["required"])
+            {
+            <div class="error">Dimensions is required!</div>
+            }
+            }
+        </div>
+
+        <div class="inputgroup two">
+            <label for="weight">Weight</label>
+            <input type="number" name="weight" id="weight" ngModel #weightInput="ngModel" min="0" required>
+            @if (weightInput.touched)
+            {
+            @if (weightInput.errors?.["required"])
+            {
+            <div class="error">Weight is required!</div>
+            }
+            }
+        </div>
+
+        <div class="inputgroup two">
+            <label for="type">Type</label>
+            <select id="type" name="type" ngModel #typeInput="ngModel" required>
+                @for (type of types; track $index) {
+                    <option [value]="type.toLowerCase()">{{type}}</option>
+                }
+            </select>   
+            @if (typeInput.touched)
+            {
+            @if (typeInput.errors?.["required"])
+            {
+            <div class="error">Type is required!</div>
+            }
+            }           
+        </div>
+
+        <div class="inputgroup two">
+            <label for="loadCapacity">Load Capacity</label>
+            <input type="number" name="load_capacity" id="loadCapacity" ngModel #loadCapacityInput="ngModel" min="0" required>
+            @if (loadCapacityInput.touched)
+            {
+            @if (loadCapacityInput.errors?.["required"])
+            {
+            <div class="error">Load Capacity is required!</div>
+            }
+            }
+        </div>
+
+        <div class="inputgroup two">
+            <label for="assmeblyRequired">Assmebly Required</label>
+            <select id="assmeblyRequired" name="assembly_required" ngModel #assmeblyRequiredInput="ngModel" required>
+                <option value="true">Yes</option>
+                <option value="false">No</option>
+            </select>   
+            @if (assmeblyRequiredInput.touched)
+            {
+            @if (assmeblyRequiredInput.errors?.["required"])
+            {
+            <div class="error">Assembly Required is required!</div>
+            }
+            }           
+        </div>
+        
+        <button [disabled]="!!form?.invalid">Create Furniture</button>
+    </form>
+</div>

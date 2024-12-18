@@ -1,6 +1,6 @@
 const { loginController, registerController, logoutController, getUserController } = require("../controllers/artisan");
 const { getAllArtworkController, getOneArtworkContoller, createArtworkContoller, updateArtworkController, deleteArtworkController } = require("../controllers/artwork");
-const { getAllClothesController } = require("../controllers/clothes");
+const { getAllClothesController, getOneClothesContoller, createClothesContoller, updateClothesController, deleteClothesController } = require("../controllers/clothes");
 const { getAllFurnitureController, getOneFurnitureContoller, createFurnitureContoller, updateFurnitureController, deleteFurnitureController } = require("../controllers/furniture");
 const { getAllJewelryController, getOneJewelryContoller, createJewelryContoller, updateJewelryController, deletejewelryController } = require("../controllers/jewelry");
 const { getAllPotteryController, getOnePotteryContoller, createPotteryContoller, updatePotteryController, deletePotteryController } = require("../controllers/pottery");
@@ -32,10 +32,10 @@ router.put("/artwork/:id",isUser,updateArtworkController);
 router.delete("/artwork/:id",isUser,deletePotteryController);
 
 router.get("/clothes",getAllClothesController);
-router.get("/clothes/:id",getOneArtworkContoller);
-router.post("/clothes",isUser,createArtworkContoller);
-router.put("/clothes/:id",isUser,updateArtworkController);
-router.delete("/clothes/:id",isUser,deleteArtworkController);
+router.get("/clothes/:id",getOneClothesContoller);
+router.post("/clothes",isUser,createClothesContoller);
+router.put("/clothes/:id",isUser,updateClothesController);
+router.delete("/clothes/:id",isUser,deleteClothesController);
 
 router.get("/furniture",getAllFurnitureController);
 router.get("/furniture/:id",getOneFurnitureContoller);

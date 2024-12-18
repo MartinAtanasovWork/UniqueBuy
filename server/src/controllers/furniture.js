@@ -17,9 +17,10 @@ async function getOneFurnitureContoller(req,res) {
 }
 
 async function createFurnitureContoller(req,res) {
+    let artisan_id = req.user._id;
     let data = req.body;
 
-    let result = await createFurniture(data);
+    let result = await createFurniture(data,artisan_id);
     
     res.json(result);
     res.end();

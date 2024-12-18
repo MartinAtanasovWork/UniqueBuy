@@ -36,7 +36,8 @@ const artisanSchema = new mongoose.Schema(
     socialMediaLinks: {
       type: Object, 
       of: String, 
-    }    
+    },
+    cart: [String]
   },
   {
     collation: {

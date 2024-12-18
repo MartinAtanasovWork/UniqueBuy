@@ -9,17 +9,18 @@ async function getAllArtworkController(req,res){
 
 async function getOneArtworkContoller(req,res) {
     let id = req.params.id;
-
+      
     let result = await getOneArtwork(id);
-    
+     
     res.json(result);
     res.end();
 }
 
 async function createArtworkContoller(req,res) {
+    let artisan_id = req.user._id;
     let data = req.body;
 
-    let result = await createArtwork(data);
+    let result = await createArtwork(data,artisan_id);
     
     res.json(result);
     res.end();

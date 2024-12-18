@@ -12,7 +12,9 @@ async function getOneArtwork(id) {
     return data;
 }
 
-async function createArtwork(artworkInfo) {
+async function createArtwork(artworkInfo,artisanId) {
+    artworkInfo.artisan_id = artisanId;    
+    
     let data = new Artwork(artworkInfo) ;
 
     await data.save();

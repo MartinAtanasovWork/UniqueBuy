@@ -11,7 +11,7 @@ const ClothesSchema = new mongoose.Schema(
       required: true
     },
     price: {
-      type: mongoose.Schema.Types.Decimal128, 
+      type: Number, 
       required: true,
     },
     stock_quantity: {
@@ -20,6 +20,7 @@ const ClothesSchema = new mongoose.Schema(
     },
     image_url: {
       type: String,
+      required: true
     },
     artisan_id: {
       type: mongoose.Schema.Types.ObjectId, 

@@ -12,7 +12,9 @@ async function getOnePottery(id) {
     return data;
 }
 
-async function createPottery(potteryInfo) {
+async function createPottery(potteryInfo,artisanId) {
+    potteryInfo.artisan_id = artisanId;
+
     let data = new Pottery(potteryInfo) ;
 
     await data.save();

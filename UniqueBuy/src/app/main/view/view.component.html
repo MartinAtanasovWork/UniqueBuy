@@ -7,6 +7,8 @@
         <app-search-options [item]="item" />
     </aside>
     <section>
-        <app-article></app-article>
+        @for (item of items; track $index) {
+            <app-article [item]="item"></app-article>
+        }        
     </section>
 </div>

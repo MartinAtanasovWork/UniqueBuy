@@ -25,6 +25,6 @@ export class AuthenticateComponent implements OnInit{
         complete: () => {
           this.isAuthenticating = false;
         }
-      })
+      })    
   }
 }

@@ -41,3 +41,9 @@ item details designs???
 search s options
 kolichka ikona
 kolichka interface
+
+
+4etvurtak
+papkite da sa adekvatni
+documentaciq
+snimki da se kachvat

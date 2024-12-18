@@ -11,7 +11,7 @@ const PotterySchema = new mongoose.Schema(
       required: true
     },
     price: {
-      type: mongoose.Schema.Types.Decimal128, 
+      type: Number, 
       required: true,
     },
     stock_quantity: {
@@ -20,6 +20,7 @@ const PotterySchema = new mongoose.Schema(
     },
     image_url: {
       type: String,
+      required: true
     },
     artisan_id: {
       type: mongoose.Schema.Types.ObjectId, 
@@ -30,7 +31,7 @@ const PotterySchema = new mongoose.Schema(
       type: String, 
     },
     dimensions: {
-      type: Object, 
+      type: String, 
     },
     finish: {
       type: String, 
@@ -39,7 +40,7 @@ const PotterySchema = new mongoose.Schema(
       type: String, 
     },
     weight: {
-      type: mongoose.Schema.Types.Decimal128, 
+      type: Number, 
     },
     customizable: {
       type: Boolean, 

@@ -12,16 +12,18 @@ async function getOneClothes(id) {
     return data;
 }
 
-async function createClothes(ClothesInfo) {
-    let data = new Clothes(ClothesInfo) ;
+async function createClothes(clothesInfo,artisanId) {
+    clothesInfo.artisan_id = artisanId;
+
+    let data = new Clothes(clothesInfo) ;
 
     await data.save();
 
     return data;
 }
 
-async function updateClothes(id,ClothesInfo) {
-    let data = await Clothes.findOneAndUpdate({_id:id},ClothesInfo);
+async function updateClothes(id,clothesInfo) {
+    let data = await Clothes.findOneAndUpdate({_id:id},clothesInfo);
 
     return data;
 }

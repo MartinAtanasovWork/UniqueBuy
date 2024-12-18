@@ -1,1 +1,5 @@
-<p>article works!</p>
+<article [routerLink]="[item?._id]">
+    <img [src]="item?.image_url" alt="">
+    <h2>{{item?.name! | shorten}}</h2>
+    <p>{{item?.price | json}}$</p>
+</article>

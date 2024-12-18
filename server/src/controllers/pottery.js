@@ -17,9 +17,10 @@ async function getOnePotteryContoller(req,res) {
 }
 
 async function createPotteryContoller(req,res) {
+    let artisan_id = req.user._id;
     let data = req.body;
 
-    let result = await createPottery(data);
+    let result = await createPottery(data,artisan_id);
     
     res.json(result);
     res.end();

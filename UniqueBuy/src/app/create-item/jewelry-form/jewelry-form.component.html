@@ -1,0 +1,130 @@
+<app-navigation />
+<div class="container">
+    <h2>Create Jewelry</h2>
+    <form #createItemForm="ngForm" (ngSubmit)="formSubmitHandler()">
+
+        <div class="inputgroup two">
+            <label for="name">Name</label>
+            <input type="text" name="name" id="name" ngModel #nameInput="ngModel" required>
+
+            @if (nameInput.touched && nameInput.errors?.["required"])
+            {
+            <div class="error">Name is required!</div>
+            }
+
+        </div>
+
+        <div class="inputgroup two">
+            <label for="description">Description</label>
+            <textarea type="text" name="description" id="description" ngModel #descriptionInput="ngModel" required></textarea>
+
+            @if (descriptionInput.touched && descriptionInput.errors?.["required"])
+            {
+            <div class="error">Description is required!</div>
+            }
+
+        </div>
+
+        <div class="inputgroup two">
+            <label for="price">Price</label>
+            <input type="number" name="price" id="price" ngModel #priceInput="ngModel" required min="0">
+
+            @if (priceInput.touched)
+            {
+            @if(priceInput.errors?.["required"])
+            {
+            <div class="error">Price is required!</div>
+            }
+            }
+
+        </div>
+
+        <div class="inputgroup two">
+            <label for="quantity">Quantity</label>
+            <input type="number" name="stock_quantity" id="quantity" ngModel #quantityInput="ngModel" required
+                min="1">
+
+            @if (quantityInput.touched)
+            {
+            @if (quantityInput.errors?.["required"])
+            {
+            <div class="error">Quantity is required!</div>
+            }
+            }
+
+        </div>
+
+        <div class="inputgroup two">
+            <label for="image">Image URL</label>
+            <input type="text" name="image_url" id="image" ngModel #imageInput="ngModel" required>
+            @if (imageInput.touched)
+            {
+            @if (imageInput.errors?.["required"])
+            {
+            <div class="error">Image URL is required!</div>
+            }
+            }
+        </div>
+        
+        <div class="inputgroup two">
+            <label for="material">Material</label>
+            <select id="material" name="material" ngModel #materialInput="ngModel" required>
+                @for (material of materials; track $index) {
+                    <option [value]="material.toLowerCase()">{{material}}</option>
+                }
+            </select>   
+            @if (materialInput.touched)
+            {
+            @if (materialInput.errors?.["required"])
+            {
+            <div class="error">Material is required!</div>
+            }
+            }           
+        </div>
+        <div class="inputgroup two">
+            <label for="size">Size</label>
+            <input type="text" name="size" id="size" ngModel #sizeInput="ngModel" required>
+        
+            @if (sizeInput.touched && sizeInput.errors?.["required"])
+            {
+            <div class="error">Size is required!</div>
+            }
+        
+        </div>
+        <div class="inputgroup two">
+            <label for="type">Type</label>
+            <select id="type" name="type" ngModel #typeInput="ngModel" required>
+                @for (type of jewelryTypes; track $index) {
+                    <option [value]="type.toLowerCase()">{{type}}</option>
+                }
+            </select>   
+            @if (typeInput.touched)
+            {
+            @if (typeInput.errors?.["required"])
+            {
+            <div class="error">Type is required!</div>
+            }
+            }           
+        </div>
+        <div class="inputgroup two">
+            <label for="weight">Weight</label>
+            <input type="number" name="weight" id="weight" ngModel #weightInput="ngModel" required>
+        
+            @if (weightInput.touched && weightInput.errors?.["required"])
+            {
+            <div class="error">Weight is required!</div>
+            }
+        
+        </div>
+        <div class="inputgroup two">
+            <label for="gemstone">Gemstone</label>
+            <select id="gemstone" name="gemstone" ngModel #gemstoneInput="ngModel">
+                @for (gemstone of gemstones; track $index) {
+                    <option [value]="gemstone.toLowerCase()">{{gemstone}}</option>
+                }
+            </select>                          
+        </div>
+
+        <button [disabled]="!!form?.invalid">Create Jewelry</button>
+    </form>
+</div>

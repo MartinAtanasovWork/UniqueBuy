@@ -1,0 +1,107 @@
+* {
+    font-family: "Knewave", system-ui;
+    font-weight: 400;
+    font-style: normal;
+}
+.bg{
+    background-color: #F8F1F1;
+    height: auto;
+    overflow: auto
+}
+article{
+    width: 70%;
+    height: fit-content;
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 15px;
+    overflow: hidden;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 70px auto;   
+}
+img{
+    max-width: 40%;   
+    flex-basis: 40%;
+    border: 2px solid black;
+    margin: 20px;
+    border-radius: 25px;
+}
+.info{    
+    flex-basis: calc(60% - 40px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-top: 50px;      
+}
+.info h2{
+    font-size: 2.5rem;
+}
+.info p {
+    font-size: 1.3rem;        
+}
+.details{
+    align-self: flex-start;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.details h2{
+    align-self: center;
+    font-size: 2rem;
+}
+.details div{
+    font-size: 1.3rem;
+    margin: 0 auto;
+}
+.button{
+    margin-top: 20px;
+}
+.button button{
+    padding: 5px 30px;
+    border-radius: 15px;
+    font-size: 1.5rem;
+    background-color: #B8EBD0;
+}
+.button button:hover{
+    background-color: #3fe58c;
+    cursor: pointer;
+}
+.desc{
+    text-align: center;
+    flex-basis: 100%;
+}
+.desc h2{
+    font-size: 2.5rem;
+}
+.desc p{
+    font-size: 1.7rem;
+    word-break: break-all;
+}
+.user-buttons{
+    flex-basis: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 100px;
+    margin-top: 50px;
+    margin-bottom: 30px;
+}
+.user-buttons button{
+    padding: 5px 30px;
+    border-radius: 15px;
+    font-size: 1.5rem;
+    cursor: pointer;   
+}
+.edit{
+    background-color: #ffbe63;
+}
+.delete{
+    background-color: rgb(246, 99, 99);
+}
+.edit:hover{
+    background-color: #ffaa32;
+}
+.delete:hover{
+    background-color: red;
+}

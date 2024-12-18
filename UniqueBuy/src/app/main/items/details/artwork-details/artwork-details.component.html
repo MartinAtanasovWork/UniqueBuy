@@ -1,1 +1,40 @@
-<p>artwork-details works!</p>
+<div class="bg">
+    <app-navigation></app-navigation>
+<article>
+    <img src="test.jpg" alt="">
+
+    <div class="info">
+        <h2>{{item?.name}}</h2>
+       
+        <p>Only for: {{item?.price}}$</p>
+        <p>In stock: {{item?.stock_quantity}}</p>
+        <div class="details">  
+            <h2>Info: </h2>     
+            <div>
+                <p>Medium: {{item?.medium}}</p>
+                <p>Dimensions: {{item?.dimensions}}</p>
+                <p>Style: {{item?.style}}</p>
+                <p>Year: {{item?.year_created}}<p>
+                <p>Edition: {{item?.edition}}</p>  
+                <p>Framing: {{item?.framing_options}}</p>  
+            </div>               
+        </div>
+
+        <div class="button">
+            <button>Add to cart</button>                    
+        </div>
+    </div>
+
+    <div class="desc">
+        <h2>Description: </h2>
+        <p>{{item?.description}}</p>
+    </div>
+
+    @if(user_id == item?.artisan_id){
+        <div class="user-buttons">
+            <button class="edit">Edit</button>
+            <button class="delete">Delete</button>
+        </div>
+    } 
+</article>
+</div>

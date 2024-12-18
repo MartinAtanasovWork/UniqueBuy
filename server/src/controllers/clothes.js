@@ -9,7 +9,7 @@ async function getAllClothesController(req,res){
 
 async function getOneClothesContoller(req,res) {
     let id = req.params.id;
-
+    
     let result = await getOneClothes(id);
     
     res.json(result);
@@ -17,9 +17,10 @@ async function getOneClothesContoller(req,res) {
 }
 
 async function createClothesContoller(req,res) {
+    let artisan_id = req.user._id;
     let data = req.body;
 
-    let result = await createClothes(data);
+    let result = await createClothes(data,artisan_id);
     
     res.json(result);
     res.end();
