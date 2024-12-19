@@ -2,7 +2,6 @@
 
 A platform where customers can order personalized handmade items from artisans around the world. Unlike typical marketplaces, every product is crafted on demand to the buyer’s specifications, ensuring uniqueness and sustainability..
 
-We have some cool functionallities so why don't you go check them out.
 We hope you can enjoy our application.  
 
 ---
