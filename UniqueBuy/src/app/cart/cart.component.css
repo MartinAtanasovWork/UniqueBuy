@@ -1,0 +1,82 @@
+section {
+    margin: 50px auto;
+    width: 70%;
+    height: min-content;
+    min-height: 60vh;
+    border: 2px solid black;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    overflow: hidden;
+    background-color: white;
+}
+
+.container {
+    height: fit-content;
+    background-color: white;
+}
+
+.purchase-continer {
+    align-self: center;
+}
+
+section>div>button {
+    background-color: rgb(53, 219, 53);
+    padding: 10px 15px;
+    font-size: 2rem;
+    border-radius: 25px;
+    margin-top: 50px;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+section>div>button:hover {
+    background-color: green;
+}
+
+.item {
+    width: 100%;
+    display: flex;
+    border-bottom: 3px solid black;
+}
+
+.item div {
+    font-size: 2.5rem;
+    align-self: center;
+    margin: 0 auto;
+}
+
+.items p {
+    text-align: center;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    align-items: center;
+}
+
+.cancel {
+    padding: 10px 15px;
+    font-size: 1.5rem;
+    border-radius: 25px;
+    background-color: red;
+    cursor: pointer;
+}
+
+.cancel:hover {
+    background-color: rgb(205, 6, 6);
+}
+
+.item img {
+    width: 200px;
+    margin: 10px;
+}
+
+.bg {
+    background: linear-gradient(135deg, #FAD6A5, #B8EBD0, #A1C6EA);
+    height: fit-content;
+    min-height: 100vh;
+}

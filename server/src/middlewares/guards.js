@@ -11,7 +11,6 @@ async function isUser(req, res, next) {
     }
    
     let result = verifyToken(token);
-
     
     if (!result) {     
         res.status(403);
@@ -19,7 +18,7 @@ async function isUser(req, res, next) {
         res.end();       
         return;
     }   
-   
+    
     next();
 }
 

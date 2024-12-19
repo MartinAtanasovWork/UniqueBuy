@@ -1,4 +1,4 @@
-const { loginController, registerController, logoutController, getUserController } = require("../controllers/artisan");
+const { loginController, registerController, logoutController, getUserController, addToShoppingCartController, getShoppingcartItemsController, removeFromShoppingCartController } = require("../controllers/artisan");
 const { getAllArtworkController, getOneArtworkContoller, createArtworkContoller, updateArtworkController, deleteArtworkController } = require("../controllers/artwork");
 const { getAllClothesController, getOneClothesContoller, createClothesContoller, updateClothesController, deleteClothesController } = require("../controllers/clothes");
 const { getAllFurnitureController, getOneFurnitureContoller, createFurnitureContoller, updateFurnitureController, deleteFurnitureController } = require("../controllers/furniture");
@@ -11,7 +11,10 @@ const router = require("express").Router();
 router.post("/artisan/login",loginController);
 router.post("/artisan/register",registerController);
 router.get("/artisan/logout",isUser,logoutController);
-router.get("/artisan",isUser,getUserController)
+router.get("/artisan",isUser,getUserController);
+router.post("/artisan/cart",isUser,addToShoppingCartController);
+router.get("/artisan/cart",isUser,getShoppingcartItemsController);
+router.delete("/artisan/cart/:id",isUser,removeFromShoppingCartController);
 
 router.get("/jewelry",getAllJewelryController);
 router.get("/jewelry/:id",getOneJewelryContoller);
@@ -29,7 +32,7 @@ router.get("/artwork",getAllArtworkController);
 router.get("/artwork/:id",getOneArtworkContoller);
 router.post("/artwork",isUser,createArtworkContoller);
 router.put("/artwork/:id",isUser,updateArtworkController);
-router.delete("/artwork/:id",isUser,deletePotteryController);
+router.delete("/artwork/:id",isUser,deleteArtworkController);
 
 router.get("/clothes",getAllClothesController);
 router.get("/clothes/:id",getOneClothesContoller);

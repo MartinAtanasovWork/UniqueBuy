@@ -30,3 +30,7 @@ nav a:hover{
     flex-grow: 4;
     justify-content: center;
 }
+svg{
+    width: 40px;
+    cursor: pointer;
+}

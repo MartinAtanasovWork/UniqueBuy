@@ -16,6 +16,11 @@ import { ClothesFormComponent } from './create-item/clothes-form/clothes-form.co
 import { PotteryFormComponent } from './create-item/pottery-form/pottery-form.component';
 import { FurnitureFormComponent } from './create-item/furniture-form/furniture-form.component';
 import { CreateComponent } from './create/create.component';
+import { UpdateItemComponent } from './update-item/update-item.component';
+import { AuthenticationGuard } from './guards/authentication.guard';
+import { CartComponent } from './cart/cart.component';
+import { ProfileComponent } from './profile/profile.component';
+import { AboutUsComponent } from './about-us/about-us.component';
 
 export const routes: Routes = [
     {path:"" , component: HeaderComponent},
@@ -36,8 +41,12 @@ export const routes: Routes = [
         {path: "clothes", component: ClothesFormComponent},
         {path: "pottery", component: PotteryFormComponent},
         {path: "furniture", component: FurnitureFormComponent}
-    ]},
+    ], canActivate: [AuthenticationGuard]},
+    {path: "update/:item/:id", component: UpdateItemComponent, canActivate: [AuthenticationGuard]},
+    {path: "artisan/cart",component: CartComponent},
     {path:"login",component:LoginComponent},
     {path:"register",component:RegisterComponent},
+    {path: "profile", component: ProfileComponent, canActivate: [AuthenticationGuard]},
+    {path: "about-us", component: AboutUsComponent},
     {path:"**",component:NotfoundComponent}    
 ];

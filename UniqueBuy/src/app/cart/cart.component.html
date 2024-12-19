@@ -1,0 +1,19 @@
+<div class="bg">
+<app-navigation />
+<section>
+    <div class="container">         
+        @for (item of items; track $index) {
+            <div class="item">
+            <img src="{{item.image_url}}" alt="">
+            <div class="info">
+                <p>{{item.name}} - {{item.price}}$</p>
+                <button class="cancel" (click)="removeItem(item._id)">Cancel</button>
+            </div>           
+        </div>
+        }
+    </div>
+    <div class="purchase-continer">
+        <button>Purchase</button>
+    </div>   
+</section>
+</div>

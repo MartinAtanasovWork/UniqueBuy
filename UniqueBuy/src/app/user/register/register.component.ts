@@ -23,7 +23,7 @@ export class RegisterComponent {
 	constructor(private us: UserService,private router: Router) { }
 
 	formSubmitHandler() {
-		this.us.register(this.form?.value.firstName, this.form?.value.lastName, this.form?.value.email, this.form?.value.password).subscribe(response => {
+		this.us.register(this.form?.value.firstName, this.form?.value.lastName, this.form?.value.email, this.form?.value.password, this.form?.value.phoneNumber,this.form?.value.specialty).subscribe(response => {
 			if(isErrorResponse(response)){  
                 this.showToast = true;
                 this.toastType = "warning";

@@ -19,4 +19,10 @@ export class ItemService {
     createOne(item: string,data: commonType){
         return this.http.post<commonType>(`/api/${item}`,data);
     }
+    deleteOne(item:string,id:string){
+        return this.http.delete(`/api/${item}/${id}`);
+    }
+    updateOne(item:string, id:string,data: commonType){
+        return this.http.put(`/api/${item}/${id}`,data);
+    }
 }

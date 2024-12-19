@@ -1,8 +1,9 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, Input, ViewChild } from '@angular/core';
 import { NavigationComponent } from '../../navigation/navigation.component';
 import { FormsModule, NgForm } from '@angular/forms';
 import { ItemService } from '../../main/item.service';
 import { Router } from '@angular/router';
+import { Clothes } from '../../main/types/item';
 
 @Component({
   selector: 'app-clothes-form',
@@ -28,12 +29,18 @@ export class ClothesFormComponent {
 ]
 
   @ViewChild("createItemForm") form: NgForm | undefined;
-
+  @Input() item: Clothes = {} as Clothes;
   constructor(private itemService:ItemService,private router: Router) { }
 
   formSubmitHandler() {
-    this.itemService.createOne("clothes",this.form?.value).subscribe(data => {
-      this.router.navigate(["/catalog/artwork"]);      
-    })
+    if (this.item._id) {
+      this.itemService.updateOne("clothes",this.item._id,this.form?.value).subscribe(data => {
+        this.router.navigate(["/catalog/clothes",this.item._id]);
+      });
+    } else {
+      this.itemService.createOne("clothes", this.form?.value).subscribe(data => {
+        this.router.navigate(["/catalog/clothes", data._id]);
+      })
+    }
   }
 }

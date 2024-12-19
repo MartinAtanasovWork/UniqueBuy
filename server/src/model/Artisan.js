@@ -37,7 +37,7 @@ const artisanSchema = new mongoose.Schema(
       type: Object, 
       of: String, 
     },
-    cart: [String]
+    cart: [[String]]
   },
   {
     collation: {

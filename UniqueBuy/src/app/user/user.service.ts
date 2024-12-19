@@ -3,6 +3,7 @@ import { ServerResponse, User, UserInfo } from './types/user';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, tap } from 'rxjs';
 import { isErrorResponse } from './types/typeguards/user.typeguard';
+import { commonTypeArray } from '../main/types/item';
 
 @Injectable({
     providedIn: 'root'
@@ -27,14 +28,14 @@ export class UserService {
             }));
     }
 
-    register(firstName: string, lastName: string, email: string, password: string) {
-        return this.http.post<ServerResponse>(this.url + "/register", { firstName, lastName, email, password })
+    register(firstName: string, lastName: string, email: string, password: string,phoneNumber: string,specialty:string ) {
+        return this.http.post<ServerResponse>(this.url + "/register", { firstName, lastName, email, password ,phoneNumber,specialty})
             .pipe(tap((response) => {
                 if (!isErrorResponse(response)) this.user$$.next(response.artisan);
             }));
     }
 
-    saveInfo(user: User) {        
+    saveInfo(user: User) {
         this.user = user.artisan;
         localStorage.setItem("token", user['Auth-Token']);
     }
@@ -47,9 +48,24 @@ export class UserService {
         return this.http.get<UserInfo>(this.url)
             .pipe(tap((user) => this.user$$.next(user)));
     }
-
     logout() {
         this.user = null;
         return this.http.get(this.url + "/logout", {});
+    }
+
+    addToCart(item: string, id: string) {
+        let data = [item, id];
+        return this.http.post(this.url + '/cart', data);
+    }
+    getCartAsItems(){
+        return this.http.get<commonTypeArray>(this.url + "/cart");
+    }
+    removeCartItem(id:string){
+        return this.http.delete(this.url + "/cart/" + id);
+    }
+    renewInfo() {
+        this.user$.subscribe(data => {
+            this.user = data;
+        })
     }
 }

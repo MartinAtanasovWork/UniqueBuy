@@ -9,8 +9,10 @@ export interface UserInfo {
     bio: String,
     profileImageUrl: String,
     specialty: String,
-    socialMediaLinks: Object
+    socialMediaLinks: Object,
+    cart: ShoppingCart[]
 }
+type ShoppingCart = [String,String];
 
 export interface UserError {
     error: string

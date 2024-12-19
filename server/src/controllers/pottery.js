@@ -53,7 +53,7 @@ async function deletePotteryController(req,res) {
     let data = await getOnePottery(id);
 
     let artisan_id = data?.artisan_id || "";
-    let user_id = req?.user_id || "a";
+    let user_id = req?.user._id || "a";
 
     if(artisan_id != user_id){
         res.status(403);

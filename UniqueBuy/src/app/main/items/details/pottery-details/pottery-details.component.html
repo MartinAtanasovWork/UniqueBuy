@@ -19,9 +19,21 @@
             </div>               
         </div>
 
-        <div class="button">
-            <button>Add to cart</button>                    
-        </div>
+        @if(user_id){
+            @if(cart.includes(item?._id!)){
+                <div class="button">
+                    <button routerLink="/artisan/cart">Already in shopping cart</button>
+                </div>
+            }@else {
+                <div class="button">
+                    <button (click)="addToCart()">Add to cart</button>                    
+                </div>
+            }
+        }@else{
+            <div class="button">
+                <button routerLink="/login" [style]="{backgroundColor: '#ffbe63'}">Log in to purchase</button>
+            </div>
+        } 
     </div>
 
     <div class="desc">
@@ -31,8 +43,8 @@
 
     @if(user_id == item?.artisan_id){
         <div class="user-buttons">
-            <button class="edit">Edit</button>
-            <button class="delete">Delete</button>
+            <button class="edit" [routerLink]="['/update/pottery',item?._id]">Edit</button>
+            <button class="delete" (click)="delete()">Delete</button>
         </div>
     } 
 </article>

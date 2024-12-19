@@ -1,11 +1,12 @@
+<div class="bg">
 <app-navigation />
 <div class="container">
-    <h2>Create Pottery</h2>
+    <h2>{{item._id == undefined ? "Create" : "Update"}} Pottery</h2>
     <form #createItemForm="ngForm" (ngSubmit)="formSubmitHandler()">
 
         <div class="inputgroup two">
             <label for="name">Name</label>
-            <input type="text" name="name" id="name" ngModel #nameInput="ngModel" required>
+            <input type="text" name="name" id="name" ngModel #nameInput="ngModel" [(ngModel)]="item.name" required>
 
             @if (nameInput.touched && nameInput.errors?.["required"])
             {
@@ -16,7 +17,7 @@
 
         <div class="inputgroup two">
             <label for="description">Description</label>
-            <textarea type="text" name="description" id="description" ngModel #descriptionInput="ngModel" required></textarea>
+            <textarea type="text" name="description" id="description" ngModel #descriptionInput="ngModel" [(ngModel)]="item.description" required></textarea>
 
             @if (descriptionInput.touched && descriptionInput.errors?.["required"])
             {
@@ -27,7 +28,7 @@
 
         <div class="inputgroup two">
             <label for="price">Price</label>
-            <input type="number" name="price" id="price" ngModel #priceInput="ngModel" required min="0">
+            <input type="number" name="price" id="price" ngModel #priceInput="ngModel" [(ngModel)]="item.price" required min="0">
 
             @if (priceInput.touched)
             {
@@ -41,7 +42,7 @@
 
         <div class="inputgroup two">
             <label for="quantity">Quantity</label>
-            <input type="number" name="stock_quantity" id="quantity" ngModel #quantityInput="ngModel" required
+            <input type="number" name="stock_quantity" id="quantity" ngModel #quantityInput="ngModel" [(ngModel)]="item.stock_quantity" required
                 min="1">
 
             @if (quantityInput.touched)
@@ -56,7 +57,7 @@
 
         <div class="inputgroup two">
             <label for="image">Image URL</label>
-            <input type="text" name="image_url" id="image" ngModel #imageInput="ngModel" required>
+            <input type="text" name="image_url" id="image" ngModel #imageInput="ngModel" [(ngModel)]="item.image_url" required> 
             @if (imageInput.touched)
             {
             @if (imageInput.errors?.["required"])
@@ -68,7 +69,7 @@
         
         <div class="inputgroup two">
             <label for="material">Material</label>
-            <select id="material" name="material" ngModel #materialInput="ngModel" required>
+            <select id="material" name="material" ngModel #materialInput="ngModel" [(ngModel)]="item.material" required>
                 @for (material of materials; track $index) {
                     <option [value]="material.toLowerCase()">{{material}}</option>
                 }
@@ -84,7 +85,7 @@
 
         <div class="inputgroup two">
             <label for="dimensions">Dimensions</label>
-            <input type="text" name="dimensions" id="dimensions" ngModel #dimensionsInput="ngModel" required>
+            <input type="text" name="dimensions" id="dimensions" ngModel #dimensionsInput="ngModel" [(ngModel)]="item.dimensions" required>
             @if (dimensionsInput.touched)
             {
             @if (dimensionsInput.errors?.["required"])
@@ -96,7 +97,7 @@
 
         <div class="inputgroup two">
             <label for="finish">Finish</label>
-            <input type="text" name="finish" id="finish" ngModel #finishInput="ngModel" required>
+            <input type="text" name="finish" id="finish" ngModel #finishInput="ngModel" [(ngModel)]="item.finish" required>
             @if (finishInput.touched)
             {
             @if (finishInput.errors?.["required"])
@@ -108,7 +109,7 @@
 
         <div class="inputgroup two">
             <label for="use">Use</label>
-            <select id="use" name="usage" ngModel #useInput="ngModel" required>
+            <select id="use" name="usage" ngModel #useInput="ngModel" [(ngModel)]="item.usage" required>
                 @for (use of use; track $index) {
                     <option [value]="use.toLowerCase()">{{use}}</option>
                 }
@@ -124,7 +125,7 @@
 
         <div class="inputgroup two">
             <label for="weight">Weight</label>
-            <input type="number" name="weight" id="weight" ngModel #weightInput="ngModel" required>
+            <input type="number" name="weight" id="weight" ngModel #weightInput="ngModel" [(ngModel)]="item.weight" required>
             @if (weightInput.touched)
             {
             @if (weightInput.errors?.["required"])
@@ -136,7 +137,7 @@
 
         <div class="inputgroup two">
             <label for="customizable">Customizable</label>
-            <select id="customizable" name="customizable" ngModel #customizableInput="ngModel" required>
+            <select id="customizable" name="customizable" ngModel #customizableInput="ngModel" [(ngModel)]="item.customizable" required>
                 <option value="true">Yes</option>
                 <option value="false">No</option>
             </select>   
@@ -149,6 +150,7 @@
             }           
         </div>
         
-        <button [disabled]="!!form?.invalid">Create Pottery</button>
+        <button [disabled]="!!form?.invalid">>{{item._id == undefined ? "Create" : "Update"}} Pottery</button>
     </form>
+</div>
 </div>

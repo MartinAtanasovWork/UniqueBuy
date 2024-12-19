@@ -1,8 +1,9 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, Input, ViewChild } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { NavigationComponent } from '../../navigation/navigation.component';
 import { ItemService } from '../../main/item.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Jewelry } from '../../main/types/item';
 
 @Component({
   selector: 'app-jewelry-form',
@@ -47,12 +48,18 @@ export class JewelryFormComponent {
     "Moonstone"
   ]
     @ViewChild("createItemForm") form: NgForm | undefined;   
-   
+    @Input() item: Jewelry = {} as Jewelry;
     constructor(private itemService: ItemService,private router: Router){}
   
     formSubmitHandler(){
-      this.itemService.createOne("jewelry",this.form?.value).subscribe(data => {
-          this.router.navigate(["/catalog/jewelry"]);
-      })      
+      if (this.item._id) {
+        this.itemService.updateOne("jewelry",this.item._id,this.form?.value).subscribe(data => {
+          this.router.navigate(["/catalog/jewelry",this.item._id]);
+        });
+      } else {
+        this.itemService.createOne("jewelry", this.form?.value).subscribe(data => {
+          this.router.navigate(["/catalog/jewelry", data._id]);
+        })
+      }      
     }
 }

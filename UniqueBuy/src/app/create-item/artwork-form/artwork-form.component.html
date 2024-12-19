@@ -1,11 +1,12 @@
+<div class="bg">
 <app-navigation />
 <div class="container">
-    <h2>Create Artwork</h2>
+    <h2>{{item._id == undefined ? "Create" : "Update"}} Artwork</h2>   
     <form #createItemForm="ngForm" (ngSubmit)="formSubmitHandler()">
 
         <div class="inputgroup two">
             <label for="name">Name</label>
-            <input type="text" name="name" id="name" ngModel #nameInput="ngModel" required>
+            <input type="text" name="name" id="name" ngModel #nameInput="ngModel" [(ngModel)]="item.name" required>
 
             @if (nameInput.touched && nameInput.errors?.["required"])
             {
@@ -16,7 +17,7 @@
 
         <div class="inputgroup two">
             <label for="description">Description</label>
-            <textarea type="text" name="description" id="description" ngModel #descriptionInput="ngModel" required></textarea>
+            <textarea type="text" name="description" id="description" ngModel #descriptionInput="ngModel" [(ngModel)]="item.description" required></textarea>
 
             @if (descriptionInput.touched && descriptionInput.errors?.["required"])
             {
@@ -27,7 +28,7 @@
 
         <div class="inputgroup two">
             <label for="price">Price</label>
-            <input type="number" name="price" id="price" ngModel #priceInput="ngModel" required min="0">
+            <input type="number" name="price" id="price" ngModel #priceInput="ngModel" [(ngModel)]="item.price" required min="0">
 
             @if (priceInput.touched)
             {
@@ -41,7 +42,7 @@
 
         <div class="inputgroup two">
             <label for="quantity">Quantity</label>
-            <input type="number" name="stock_quantity" id="quantity" ngModel #quantityInput="ngModel" required
+            <input type="number" name="stock_quantity" id="quantity" ngModel #quantityInput="ngModel" [(ngModel)]="item.stock_quantity" required
                 min="1">
 
             @if (quantityInput.touched)
@@ -56,7 +57,7 @@
 
         <div class="inputgroup two">
             <label for="image">Image URL</label>
-            <input type="text" name="image_url" id="image" ngModel #imageInput="ngModel" required>
+            <input type="text" name="image_url" id="image" ngModel #imageInput="ngModel" [(ngModel)]="item.image_url" required> 
             @if (imageInput.touched)
             {
             @if (imageInput.errors?.["required"])
@@ -68,7 +69,7 @@
         
         <div class="inputgroup two">
             <label for="medium">Medium</label>
-            <select id="medium" name="medium" ngModel #mediumInput="ngModel" required>
+            <select id="medium" name="medium" ngModel #mediumInput="ngModel" [(ngModel)]="item.medium" required>
                 @for (medium of artMediums; track $index) {
                     <option [value]="medium.toLowerCase()">{{medium}}</option>
                 }
@@ -83,7 +84,7 @@
         </div>
         <div class="inputgroup two">
             <label for="dimensions">Dimensions</label>
-            <input type="text" name="dimensions" id="dimensions" ngModel #dimensionsInput="ngModel" required>
+            <input type="text" name="dimensions" id="dimensions" ngModel #dimensionsInput="ngModel" [(ngModel)]="item.dimensions" required>
         
             @if (dimensionsInput.touched && dimensionsInput.errors?.["required"])
             {
@@ -93,7 +94,7 @@
         </div>
         <div class="inputgroup two">
             <label for="framing">Framing Options</label>
-            <input type="text" name="framing_options" id="framing" ngModel #dimensionsInput="ngModel" required>
+            <input type="text" name="framing_options" id="framing" ngModel #dimensionsInput="ngModel" [(ngModel)]="item.framing_options" required>
         
             @if (dimensionsInput.touched && dimensionsInput.errors?.["required"])
             {
@@ -103,7 +104,7 @@
         </div>
         <div class="inputgroup two">
             <label for="style">Style</label>
-            <select id="style" name="style" ngModel #styleInput="ngModel" required>
+            <select id="style" name="style" ngModel #styleInput="ngModel" [(ngModel)]="item.style" required>
                 @for (style of artStyles; track $index) {
                     <option [value]="style.toLowerCase()">{{style}}</option>
                 }
@@ -118,7 +119,7 @@
         </div>
         <div class="inputgroup two">
             <label for="year">Year</label>
-            <input type="number" name="year_created" id="year" ngModel #yearInput="ngModel" min="1600" max="2024" required>
+            <input type="number" name="year_created" id="year" ngModel #yearInput="ngModel" min="1600" max="2024" [(ngModel)]="item.year_created" required>
         
             @if (yearInput.touched)
             {
@@ -129,14 +130,14 @@
                     <div class="error">Year must be greater than 1600!</div>
                 }
                 @if(yearInput.errors?.["max"]){
-                    <div class="error">Year must be axistinng year!</div>
+                    <div class="error">Year must be existing year!</div>
                 }
             }
         
         </div>
         <div class="inputgroup two">
             <label for="edition">Edition</label>
-            <input type="text" name="edition" id="edition" ngModel #editionInput="ngModel" min="1600" required>
+            <input type="text" name="edition" id="edition" ngModel #editionInput="ngModel" min="1600" [(ngModel)]="item.edition" required>
         
             @if (editionInput.touched && editionInput.errors?.["required"])
             {
@@ -145,6 +146,7 @@
         
         </div>
 
-        <button [disabled]="!!form?.invalid">Create Artwork</button>
+        <button [disabled]="!!form?.invalid">{{item._id == undefined ? "Create" : "Update"}} Artwork</button>
     </form>
+</div>
 </div>

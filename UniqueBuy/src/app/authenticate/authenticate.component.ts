@@ -18,12 +18,15 @@ export class AuthenticateComponent implements OnInit{
       this.us.getUserInfo().subscribe({
         next: () => {
           this.isAuthenticating = false;
+          this.us.renewInfo();
         },
         error: () => {
           this.isAuthenticating = false;
+          this.us.renewInfo();
         },
         complete: () => {
           this.isAuthenticating = false;
+          this.us.renewInfo();
         }
       })    
   }

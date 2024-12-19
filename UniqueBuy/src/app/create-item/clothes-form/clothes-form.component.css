@@ -3,16 +3,19 @@
     font-weight: 400;
     font-style: normal;
 }
-.container{
+
+.container {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;   
+    align-items: center;
 }
-.container h2{
+
+.container h2 {
     font-size: 3rem;
 }
-form{
+
+form {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -23,49 +26,62 @@ form{
     border: 2px solid black;
     border-radius: 25px;
     padding: 40px 80px;
-    background-color:#B8EBD0;
+    background-color: #B8EBD0;
     width: 1000px;
 }
-.inputgroup{
+
+.inputgroup {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    gap: 10px;  
-    flex-basis: 45%; 
+    gap: 10px;
+    flex-basis: 45%;
 }
-.inputgroup input{
-    font-size: 1.3rem;    
-    width: 100%;       
+
+.inputgroup input {
+    font-size: 1.3rem;
+    width: 100%;
 }
-.inputgroup select{
-    font-size: 1.3rem;    
-    width: 100%;       
+
+.inputgroup select {
+    font-size: 1.3rem;
+    width: 100%;
 }
-form button{
+
+form button {
     flex-basis: 100%;
     font-size: 2.2rem;
     border: 1px solid black;
     border-radius: 15px;
-    padding: 1px 20px; 
+    padding: 1px 20px;
     margin-top: 20px;
     background-color: #ffbe63;
     margin: 50px auto;
     margin-bottom: 0;
 }
-form button:hover{
+
+form button:hover {
     background-color: #FAD6A5;
 }
-.two{
+
+.two {
     flex-basis: 45%;
 }
-textarea{
+
+textarea {
     height: 100px;
     resize: none;
 }
-.three{
+
+.three {
     flex-basis: 30%;
 }
-.error{
+
+.error {
     color: red;
     font-size: 1.2rem;
+}
+
+.bg {
+    background: rgb(226, 224, 224);
 }

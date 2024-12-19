@@ -1,8 +1,9 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, Input, ViewChild } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { NavigationComponent } from '../../navigation/navigation.component';
 import { ItemService } from '../../main/item.service';
 import { Router } from '@angular/router';
+import { Pottery } from '../../main/types/item';
 
 @Component({
   selector: 'app-pottery-form',
@@ -34,14 +35,19 @@ use = [
 ]
 
   @ViewChild("createItemForm") form: NgForm | undefined;
-
-  constructor(private itemSevice: ItemService,private router: Router) { }
+  @Input() item: Pottery = {} as Pottery;
+  constructor(private itemService: ItemService,private router: Router) { }
 
     
   formSubmitHandler() {
-    let data = {...this.form?.value,customizable: this.form?.value.customizable == "true"?true:false};
-    this.itemSevice.createOne("pottery",data).subscribe(res => {
-      this.router.navigate(["/catalog/pottery"]);      
-    })
+    if (this.item._id) {
+      this.itemService.updateOne("pottery",this.item._id,this.form?.value).subscribe(data => {
+        this.router.navigate(["/catalog/pottery",this.item._id]);
+      });
+    } else {
+      this.itemService.createOne("pottery", this.form?.value).subscribe(data => {
+        this.router.navigate(["/catalog/pottery", data._id]);
+      })
+    }
   }
 }
